@@ -14,7 +14,7 @@ for i in mylist:
         do_something(i)
 ```
 This loops through each element in `mylist` and calls the `do_something` function on it.
-
+<!--excerpt-->
 The other use of the `in` keyword, however, is to check if an element is present in some sort of container (lists, sets, dictionaries, etc).
 
 ```python

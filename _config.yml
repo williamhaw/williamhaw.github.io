@@ -4,8 +4,8 @@ description: "Software Engineer"
 
 # Jekyll settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
-paginate: 2                  # number of articles per page, remove to disable pagination
-excerpt_separator: "\n\n\n"  # indicates the end of the excerpt by two blank lines
+paginate: 5                  # number of articles per page, remove to disable pagination
+excerpt_separator: <!--excerpt-->  # indicates the end of the excerpt
 
 # Page settings
 show_excerpts: true          # show article previews on the home page instead of headlines
