@@ -29,7 +29,7 @@ But what's going on under the hood?
 
 The answer is that the `in` keyword tells the Python runtime to check for the presence of magic functions implemented by the iterator or container. The way Python does this lookup is usually referred to as [duck typing](https://en.wikipedia.org/wiki/Duck_typing). This concept is also present in other so-called "dynamic" languages (Ruby and Javascript come to mind).
 
-# `iter()`, `__iter__()` and `__next__()`
+# iter(), \_\_iter\_\_() and \_\_next\_\_()
 
 The first two magic functions that all iterators implement are `__iter__()`[^2] and `__next__()`[^3].
 
@@ -64,7 +64,7 @@ The `for` keyword calls `iter()`[^4] on MyIterator which invokes the `__iter__()
 
 
 
-# `__contains__()`
+# \_\_contains\_\_()
 
 To be able to test membership in your container, the `__contains__()`[^5] method must be implemented.
 
@@ -186,12 +186,12 @@ Early termination
 True
 ```
 
+Edit: Fixed list naming in example to avoid using the `list` keyword as a variable name
+
 ## References:
 
 [^1]: [iterator](https://docs.python.org/3/glossary.html#term-iterator)
-[^2]: [`__iter__()`](https://docs.python.org/3/reference/datamodel.html#object.__iter__)
-[^3]: [`__next__()`](https://docs.python.org/3/library/stdtypes.html#iterator.__next__)
+[^2]: [\_\_iter\_\_()](https://docs.python.org/3/reference/datamodel.html#object.__iter__)
+[^3]: [\_\_next\_\_()](https://docs.python.org/3/library/stdtypes.html#iterator.__next__)
 [^4]: [iter()](https://docs.python.org/3/library/functions.html#iter)
-[^5]: [`__contains__()`](https://docs.python.org/3/reference/datamodel.html#object.__contains__)
-
-Edit: Fixed list naming in example to avoid using the `list` keyword as a variable name
+[^5]: [\_\_contains\_\_()](https://docs.python.org/3/reference/datamodel.html#object.__contains__)
