@@ -37,8 +37,8 @@ For example:
 
 ```python
 class MyIterator:
-    def __init__(self, list):
-            self.data = list
+    def __init__(self, mylist):
+            self.data = mylist
             self.index = 0
     def __iter__(self):
             return self
@@ -70,8 +70,8 @@ To be able to test membership in your container, the `__contains__()`[^5] method
 
 ```python
 class MyContainer:
-    def __init__(self, list):
-        self.data = list
+    def __init__(self, mylist):
+        self.data = mylist
     def __contains__(self, element):
         return element in self.data
 
@@ -91,8 +91,8 @@ Putting them together:
 
 ```python
 class MyIterator:
-    def __init__(self, list):
-            self.data = list
+    def __init__(self, mylist):
+            self.data = mylist
             self.index = 0
     def __iter__(self):
             return self
@@ -137,8 +137,8 @@ Here we end up with the complete implementation.
 
 ```python
 class MyIterator:
-    def __init__(self, list):
-        self.data = list
+    def __init__(self, mylist):
+        self.data = mylist
         self.index = 0
     def __iter__(self):
         self.index = 0
@@ -193,3 +193,5 @@ True
 [^3]: [`__next__()`](https://docs.python.org/3/library/stdtypes.html#iterator.__next__)
 [^4]: [iter()](https://docs.python.org/3/library/functions.html#iter)
 [^5]: [`__contains__()`](https://docs.python.org/3/reference/datamodel.html#object.__contains__)
+
+Edit: Fixed list naming in example to avoid using the `list` keyword as a variable name
