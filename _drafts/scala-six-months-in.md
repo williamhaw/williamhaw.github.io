@@ -22,56 +22,57 @@ Even though Optionals have been part of the Java 8 standard library for some tim
 ## Case Classes
 
 Compare this:
+```java
+public class MyPojo {
+    private String name;
+    private Integer year;
 
-    public class MyPojo {
-        private String name;
-        private Integer year;
-    
-        public MyPojo(String name, Integer year) {
-            this.name = name;
-            this.year = year;
-        }
-    
-        public String getName() {
-            return name;
-        }
-    
-        public Integer getYear() {
-            return year;
-        }
-    
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            MyPojo myPojo = (MyPojo) o;
-            return name.equals(myPojo.name) &&
-                    year.equals(myPojo.year);
-        }
-    
-        @Override
-        public int hashCode() {
-            return Objects.hash(name, year);
-        }
-    
-        @Override
-        public String toString() {
-            return "MyPojo{" + name + "," + year + '}';
-        }
+    public MyPojo(String name, Integer year) {
+        this.name = name;
+        this.year = year;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MyPojo myPojo = (MyPojo) o;
+        return name.equals(myPojo.name) &&
+                year.equals(myPojo.year);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, year);
+    }
+
+    @Override
+    public String toString() {
+        return "MyPojo{" + name + "," + year + '}';
+    }
+}
+```
 with the equivalent:
-
-    case class MyCaseClass(name: String, year: Int)
-
+```scala
+case class MyCaseClass(name: String, year: Int)
+```
 It's really refreshing being able to just define your data in a class with sensible defaults for printing and comparison. Even though all the methods in the Java example were generated automatically by Intellij, there's so much more boilerplate than in Scala.
 
 ## Pattern Matching
-
-    def makeADecision(argument: Option): Unit = argument match {
-    	case Some(_) => println("Has a value")
-    	case None    => println("No value in argument")
-    }
+```scala
+def makeADecision(argument: Option): Unit = argument match {
+    case Some(_) => println("Has a value")
+    case None    => println("No value in argument")
+}
+```
 
 Yep, switch-case on steroids! No more calling `instanceof()` to check the class
 
