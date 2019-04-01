@@ -66,7 +66,7 @@ with the equivalent:
 case class MyCaseClass(name: String, year: Int)
 ```
 
-It's really refreshing being able to just define your data in a class with sensible defaults for printing and comparison. Even though all the methods in the Java example were generated automatically by Intellij, there's so much more boilerplate than in Scala.
+It's really refreshing being able to just define your data in a one-liner class with sensible defaults for printing and comparison. Even though all the methods in the Java example were generated automatically by Intellij, there's so much more boilerplate than in Scala.
 
 ## Pattern Matching
 
