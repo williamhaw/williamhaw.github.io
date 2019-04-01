@@ -7,21 +7,20 @@ tags:
 date: 2019-03-31 13:28:37 +0000
 
 ---
-After switching jobs, I was introduced to Scala at my workplace, Agoda.
+After switching jobs, I was introduced to Scala at my new workplace. I've compiled a list of things that I have learned until now. I've kept the comparisons to the languages themselves, instead of functionality that can be provided by libraries.
 
 <!--excerpt-->
 
 # Nice Things
 
-I've kept the comparisons to the languages themselves, instead of functionality that are provided by libraries.
-
 ## Null Safety
 
-Even though Optionals have been part of the Java 8 standard library for some time, few libraries use it in their APIs which forces you to deal with the existence of null references. However in Scala, the use of Options is idiomatic, which when combined with pattern matching, allows you to handle non-existence separately from error values. That is the biggest reason why null pointer exceptions are such an ubiquitous pain in the ass in Java.
+Even though Optionals have been part of the Java standard library since Java 8, few libraries use it in their APIs which forces you to deal with the existence of null references. However in Scala, the use of Options is idiomatic, which when combined with pattern matching, allows you to handle non-existence separately from error values. That is the biggest reason why null pointer exceptions are such an ubiquitous pain in the ass in Java.
 
 ## Case Classes
 
 Compare this:
+
 ```java
 public class MyPojo {
     private String name;
@@ -60,13 +59,17 @@ public class MyPojo {
     }
 }
 ```
+
 with the equivalent:
+
 ```scala
 case class MyCaseClass(name: String, year: Int)
 ```
+
 It's really refreshing being able to just define your data in a class with sensible defaults for printing and comparison. Even though all the methods in the Java example were generated automatically by Intellij, there's so much more boilerplate than in Scala.
 
 ## Pattern Matching
+
 ```scala
 def makeADecision(argument: Option): Unit = argument match {
     case Some(_) => println("Has a value")
@@ -74,9 +77,27 @@ def makeADecision(argument: Option): Unit = argument match {
 }
 ```
 
-Yep, switch-case on steroids! No more calling `instanceof()` to check the class
+Yep, switch-case on steroids! No more calling `instanceof()`and casting the object to a child class.
+
+***
+
+# Concepts
 
 ## Functional Programming
+
+> A monad is just a monoid in the category of endofunctors, what's the problem?
+
+There's a [lot](https://medium.com/beingprofessional/understanding-functor-and-monad-with-a-bag-of-peanuts-8fa702b3f69e) of [literature](https://blog.redelastic.com/a-guide-to-scala-collections-exploring-monads-in-scala-collections-ef810ef3aec3) explaining [monads](http://appliedscala.com/blog/2016/understanding-monads/), so I won't presume to be able to explain them here, but most data structures in the Scala collections library, as well as things like Futures and Options are monads and therefore express computation in an easily composable way.
+
+## Types Are Your Friend
+
+I especially liked learning about [sealed traits](https://gist.github.com/mattbarackman/82b1712add45ceffa8ffe56f81b8bcc2), when paired with pattern matching, lets me actually catch more errors at compile time due to exhaustiveness checking. That's kind of the point of having an explicit type system anyway.
+
+## Typeclasses
+
+Separate your data and logic! Though this uses scary "implicit" variables to do so... Here's a good [introduction](https://alvinalexander.com/scala/fp-book/type-classes-101-introduction).
+
+***
 
 # ... Not So Nice Things
 
@@ -86,4 +107,4 @@ It's a **lot** slower to compile Scala as compared to Java. Enough that the job 
 
 ## ~~Simple~~ Complex Build Tool
 
-This is subjective, but sbt is one of the more complicated build tools that I have come across. Till now, I've mainly gotten around that problem by copying sbt task definitions from other existing projects.
+This is subjective, but sbt is one of the more complicated build tools that I have come across. Till now, I've mainly gotten around that problem by copying sbt task definitions from other existing projects, but I despair of actually understanding it.
