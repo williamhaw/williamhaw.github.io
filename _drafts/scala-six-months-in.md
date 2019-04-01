@@ -91,11 +91,11 @@ There's a [lot](https://medium.com/beingprofessional/understanding-functor-and-m
 
 ## Types Are Your Friend
 
-I especially liked learning about [sealed traits](https://gist.github.com/mattbarackman/82b1712add45ceffa8ffe56f81b8bcc2), when paired with pattern matching, lets me actually catch more errors at compile time due to exhaustiveness checking. That's kind of the point of having an explicit type system anyway.
+I especially liked learning about [sealed traits](https://gist.github.com/mattbarackman/82b1712add45ceffa8ffe56f81b8bcc2), which when paired with pattern matching, lets me actually catch more errors at compile time due to exhaustiveness checking. That's kind of the point of having an explicit type system anyway.
 
 ## Typeclasses
 
-Separate your data and logic! Though this uses scary "implicit" variables to do so... Here's a good [introduction](https://alvinalexander.com/scala/fp-book/type-classes-101-introduction).
+Separate your data and logic! Though this uses scary "implicit" variables/methods to do so... Here's a good [introduction](https://alvinalexander.com/scala/fp-book/type-classes-101-introduction).
 
 ***
 
