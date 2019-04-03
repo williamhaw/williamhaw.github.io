@@ -77,7 +77,7 @@ def makeADecision(argument: Option): Unit = argument match {
 }
 ```
 
-Yep, switch-case on steroids! No more calling `instanceof()`and casting the object to a child class.
+Yep, switch-case on steroids! No more calling `instanceof()`and casting the object to a child class. Then again there's a [JEP](https://openjdk.java.net/jeps/305) for pattern matching in Java.
 
 ***
 
