@@ -13,6 +13,17 @@ After switching jobs, I was introduced to Scala at my new workplace. I've compil
 
 # Nice Things
 
+## Immutability and Type Inference
+
+Declaring local variables in idiomatic Scala starts off by declaring it `val`, which makes the reference immutable, then change it to `var` if you _really_ need to mutate it (so far I've never found the need to do that). Contrast that with Java, which is the other way around (declare a `final` variable if you want immutability, otherwise it is mutable by default). It's much easier to reason about the behaviour of these variables when you don't have to worry that the reference can be changed later on.
+
+Also nice is type inference:
+```scala
+val myString = "Hello, World." //myString is of type String
+```
+
+Java only recently got [this](https://developer.oracle.com/java/jdk-10-local-variable-type-inference) in Java 10.
+
 ## Null Safety
 
 Even though Optionals have been part of the Java standard library since Java 8, few libraries use it in their APIs which forces you to deal with the existence of null references. However in Scala, the use of Options is idiomatic, which when combined with pattern matching, allows you to handle non-existence separately from error values. That is the biggest reason why null pointer exceptions are such an ubiquitous pain in the ass in Java.
@@ -108,3 +119,6 @@ It's a **lot** slower to compile Scala as compared to Java. Enough that the job 
 ## ~~Simple~~ Complex Build Tool
 
 This is subjective, but sbt is one of the more complicated build tools that I have come across. Till now, I've mainly gotten around that problem by copying sbt task definitions from other existing projects, but I despair of actually understanding it.
+
+# Conclusion
+In conclusion, I think there are many language design choices in Scala that actually make it _nice_ to work in as compared to Java. Then again I used to work in a Java 7/8 shop. Nowadays Java 11 has incorporated many new language features inspired by what other languages are doing, so YMMV.
