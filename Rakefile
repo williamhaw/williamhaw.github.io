@@ -11,6 +11,7 @@ task :html_proofer do
       empty_alt_ignore: true,
       check_html: true,
       only_4xx: true,
+      check_favicon: true,
       file_ignore: [/assets\/katex\/index.html/],
       typhoeus: {
         ssl_verifyhost: 0,
