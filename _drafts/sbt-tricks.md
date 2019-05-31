@@ -20,15 +20,15 @@ Basically you can define a function that takes the Scala version string and retu
 # Conflicting cross-version suffixes
 
 If you fix the version of your library to a certain Scala version like so:
-
+```scala
     val myDependency = "org.scala-lang.modules" % "scala-xml_2.11" % "0.1.0"
-
+```
 then shame on you!
 
 This will make upgrading Scala versions difficult in the future. Instead, you should let sbt resolve the version suffix of the library like so:
-
+```scala
     val myDependency = "org.scala-lang.modules" %% "scala-xml" % "0.1.0"
-
+```
 This is even worse when the import is inside a dependency of a dependency, so that it doesn't appear in the build.sbt of the original project! I used the sbt-dependency-graph plugin to look for places where the conflicting version was being brought in (for e.g scala-xml_2.11) and then went to those projects to publish new versions without the forced suffixes.
 
 # Change Scala version to new version to get IDE hints
