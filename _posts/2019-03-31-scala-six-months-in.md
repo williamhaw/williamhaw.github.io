@@ -4,7 +4,7 @@ title: Scala, Six Months In
 category: ''
 tags:
 - Scala
-date: 2019-03-31 13:28:37 +0000
+date: '2019-03-31T13:28:37.000+00:00'
 
 ---
 After switching jobs, I was introduced to Scala at my new workplace. I've compiled a list of things that I have learned until now. I've kept the comparisons to the languages themselves, instead of functionality that can be provided by libraries.
@@ -22,7 +22,7 @@ Also nice is type inference:
 val myString = "Hello, World." //myString is of type String
 ```
 
-Java only recently got [this](https://developer.oracle.com/java/jdk-10-local-variable-type-inference) in Java 10.
+Java only recently got [this](https://developer.oracle.com/java/jdk-10-local-variable-type-inference.html) in Java 10.
 
 ## Null Safety
 
