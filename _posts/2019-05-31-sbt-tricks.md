@@ -13,9 +13,30 @@ I was recently upgrading a library at work from using Scala 2.11 to 2.12. Here a
 
 # Build with different library versions for different Scala versions
 
-I followed steps 1 and 2 [here](http://rosslawley.co.uk/how-to-handle-multiple-scala-versions/ "http://rosslawley.co.uk/how-to-handle-multiple-scala-versions/")
+I followed steps 1 and 2 [here](http://rosslawley.co.uk/how-to-handle-multiple-scala-versions/ "http://rosslawley.co.uk/how-to-handle-multiple-scala-versions/"), but it's quite an old post.
 
 Basically you can define a function that takes the Scala version string and return the right version of the library for that Scala version. This is useful especially for protobuf libraries compiled with scalapb since we had a version compiled with scalapb 0.4.9 for 2.11 and a version compiled with scalapb 0.6.0 for 2.12.
+
+For SBT 0.13.17, this is an example of what I used:
+
+specifiying versions:
+```scala
+	crossScalaVersions := Seq("2.11.8", "2.12.8")
+```
+
+configure libraries:
+```scala
+	val lib_2_11 = "com.example" %% "protobuf" % "0.1.0-scalapb-0.4.9"
+    val lib = "com.example" %% "protobuf" % "0.1.0-scalapb-0.6.0"
+
+	def protobufs(scalaVersion: String) = {
+    	scalaVersion match {
+        	case "2.11.8" => lib_2_11
+            case _ => lib
+        }
+    }
+    libraryDependencies ++= scalaVersion(version => protobufs(version)).value
+```
 
 # Conflicting cross-version suffixes
 
@@ -37,7 +58,7 @@ This is even worse when the import is inside a dependency of a dependency, so th
 
 # Change Scala version to new version to get IDE hints
 
-After solving some of the dependency resolution issues, I was able to get the compilation started. However, it was failing for the new Scala version because of some field changes in the protobufs.
+After solving some of the dependency resolution issues, I was able to get the compilation started. However, it was failing for the new Scala version because of some field changes in the protobufs. That required me to write different versions of some classes and tests for the different Scala versions.
 
 # Compile some classes differently between Scala versions
 
