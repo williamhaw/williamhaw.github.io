@@ -21,21 +21,21 @@ For SBT 0.13.17, this is an example of what I used:
 
 specifiying versions:
 ```scala
-	crossScalaVersions := Seq("2.11.8", "2.12.8")
+crossScalaVersions := Seq("2.11.8", "2.12.8")
 ```
 
 configure libraries:
 ```scala
-	val lib_2_11 = "com.example" %% "protobuf" % "0.1.0-scalapb-0.4.9"
-    val lib = "com.example" %% "protobuf" % "0.1.0-scalapb-0.6.0"
+val lib_2_11 = "com.example" %% "protobuf" % "0.1.0-scalapb-0.4.9"
+val lib = "com.example" %% "protobuf" % "0.1.0-scalapb-0.6.0"
 
-	def protobufs(scalaVersion: String) = {
-    	scalaVersion match {
-        	case "2.11.8" => lib_2_11
-            case _ => lib
-        }
-    }
-    libraryDependencies ++= scalaVersion(version => protobufs(version)).value
+def protobufs(scalaVersion: String) = {
+	scalaVersion match {
+		case "2.11.8" => lib_2_11
+		case _ => lib
+	}
+}
+libraryDependencies ++= scalaVersion(version => protobufs(version)).value
 ```
 
 # Conflicting cross-version suffixes
