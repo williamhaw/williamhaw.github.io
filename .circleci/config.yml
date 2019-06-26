@@ -34,7 +34,7 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       
-      - build:
+      - jekyll_build:
           name: jekyll build
           command: |
             bundle exec jekyll build
