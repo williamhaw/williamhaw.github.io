@@ -1,5 +1,5 @@
 # My Blog
-[![Build Status](https://travis-ci.org/williamhaw/williamhaw.github.io.svg?branch=master)](https://travis-ci.org/williamhaw/williamhaw.github.io)
+[![CircleCI](https://circleci.com/gh/williamhaw/williamhaw.github.io.svg?style=svg)](https://circleci.com/gh/williamhaw/williamhaw.github.io)
 
 ## Based on
 [Contrast](https://github.com/niklasbuschmann/contrast) theme by Niklas Buschmann
