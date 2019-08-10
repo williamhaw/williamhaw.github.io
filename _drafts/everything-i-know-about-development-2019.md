@@ -66,7 +66,7 @@ Those include:
       Unfortunately it's [not guaranteed to work](https://www.javaworld.com/article/2074979/double-checked-locking--clever--but-broken.html).
 * Dependency Injection
 
-  One part of dependency injection is writing your classes to accept their dependencies in the constructor / setup code. The other part is either wiring up the dependencies from the main() function or using a library/framework to magically wire them up.
+  The first part of dependency injection is writing your classes to accept their dependencies through the constructor / setup code. The other part is either wiring up the dependencies from the main() function or using a library/framework to magically wire them up.
 * JVM basics
   - Garbage Collection
   - Profiling
@@ -104,8 +104,10 @@ More and more it seems to me that Scala is one of those languages which has affe
   - For-Comprehensions for that sweet syntactic sugar
   - Immutable data structures as default
   - 
-* Play
+* Play 2
   - Contributed to a couple of internal Play apps at work
+
+  I don't have much to say about this, it's a nicely designed framework that gets out of my way.
 * Akka
   - Basic knowledge of Actors and actor message passing
   - Scheduling within the ActorSystem
@@ -128,7 +130,7 @@ More and more it seems to me that Scala is one of those languages which has affe
   - Functional programming libraries like cats and scalaz
   - Type safe database queries (doobie?)
 * Akka
-  - Actor hierarchies - I've heard one sticking point is how to implement backpressure effectively
+  - Actor hierarchies - I've heard one sticking point is how to implement backpressure effectively.
   - Akka Cluster (not sure what problem this solves quite yet)
 
 # Sysadmin/DevOps
@@ -198,13 +200,14 @@ More and more it seems to me that Scala is one of those languages which has affe
     - Observer 
 
       Common interview question: How is the Observer pattern different from Publish-Subscribe?
-      Answer: The subject needs to know which listeners are listening as it keeps a list of listeners to trigger the event. Similarly, the listener needs to know which subject to listen to. Pub-Sub allows you to decouple the subject and its listeners usually through a message queue as the subject does not need to know what is listening and the listener does not need to know what published the event.
+      Answer: The subject needs to know which listeners are listening as it keeps a list of listeners to trigger the event. Similarly, the listener needs to specify which subject to listen to. Pub-Sub allows you to decouple the subject and its listeners usually through a message queue as the publisher does not need to know what is listening and the subscriber does not need to know what published the event.
     - Visitor
 
       I'm kind of fifty-fifty when choosing to implement this pattern as it does make the behaviour harder to follow.
     - Strategy 
 
-      Not really needed if your programming language allows you to compose behaviour.
+      Choose which algorithm to use at runtime! Not really needed if your programming language allows you to compose behaviour.
+    - Template Method
 
 ## Don't Know
 
@@ -213,7 +216,8 @@ More and more it seems to me that Scala is one of those languages which has affe
 ## Know
 
 * Kafka - a distributed append-only log masquerading as a message queue
-* Cassandra
+* Cassandra - a distributed append-only log masquerading as a database
+* Eventual Consistency
 
 ## Don't Know
 
