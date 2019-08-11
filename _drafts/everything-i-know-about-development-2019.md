@@ -47,10 +47,10 @@ I learned this at University and it has been useful ever since.
 I started nearly four years ago as the first engineering hire in a tiny [startup](http://clickdrive.io/) mainly running Java in the cloud and in our vehicle IOT solution. I still think that the stuff I worked on there was really interesting, and in many cases I was the main contributor to the features of our solution.
 
 Those include:
-- Building a diff-based package manager using [Merkle trees](https://en.wikipedia.org/wiki/Merkle_tree) to automate deployments to our devices over the air while minimizing bandwidth usage over 4G.
+- Building a diff-based package manager using [Merkle trees](https://en.wikipedia.org/wiki/Merkle_tree) to automate deployments to our devices over the air while minimising bandwidth usage over 4G.
 - Implementing a message queue protocol over UDP to reliably send streaming data to our cloud servers.
 - Hacking car CAN bus networks and reverse engineering recorded messages.
-- Implementing a video telemetry recording and playback app for a client to monitor and gice feedback to driving students and instructors.
+- Implementing a video telemetry recording and playback app for a client to monitor and give feedback to driving students and instructors.
 
 ## Know
 
@@ -70,7 +70,7 @@ Those include:
 
       Errors shouldn't be handled, Exceptions may be handled or passed up the call stack. I also consider checked exceptions(specifying handled exceptions in public methods) to be a mistake.
     - Enums
-      - Use as reflection and serialization-safe singleton
+      - Use as reflection and serialisation-safe singleton
   - The contract between hashcode() and equals().
 
     Basically, if two objects are equal, the hashcode must be the same. The converse does not apply.
@@ -121,7 +121,7 @@ Those include:
 
 # Scala
 
-For the past year, I've been working at a [technology company in the travel industry](https://www.agoda.com), mainly using Scala to integrate with third party supplier APIs. I think it's interesting in much different ways from my previous job as it's more about exploring the landscape of optimisation possiblilities and maintaining and debugging serveral complex systems at scale. I also got to appreciate that there are two parts to scaling: the actual performance of the system, and coordinating the efforts of many engineers.
+For the past year, I've been working at a [technology company in the travel industry](https://www.agoda.com), mainly using Scala to integrate with third party supplier APIs. I think it's interesting in much different ways from my previous job as it's more about exploring the landscape of optimisation possibilities and maintaining and debugging several complex systems at scale. I also got to appreciate that there are two parts to scaling: the actual performance of the system, and coordinating the efforts of many engineers.
 
 Those include:
 - Actually integrating suppliers end to end
@@ -362,7 +362,7 @@ I don't have much experience with designing full-stack architectures. (I'm not v
 
 ## Don't Know
 
-* How to be consistent in practicing and learning - I don't think I'm very good at this.
+* How to be consistent in practising and learning - I don't think I'm very good at this.
 
 # Other
 
