@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Everything I Know About Development in 2019
-category: 'Everything I Know About Development'
+category: Everything I Know About Development
 tags: []
 
 ---
