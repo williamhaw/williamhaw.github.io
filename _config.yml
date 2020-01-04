@@ -29,7 +29,7 @@ icons:                       # (optional) icons in the header, see http://fontaw
   rss: "/feed.xml"
 
 comments:                    # embed disqus or isso comments
-  disqus: "williamhaw"
+  # disqus: "williamhaw"
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: UA-135432016-1
