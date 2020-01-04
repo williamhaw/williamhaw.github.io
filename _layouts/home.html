@@ -31,7 +31,7 @@ layout: default
   {%- assign date_format = site.date_format | default: "%B %d, %Y" -%}
   <div  class="flex-container">
     <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: date_format }}</time>
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+    <h3 class="flex-item-50"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
   </div>
   {% endfor %}
 </article>
