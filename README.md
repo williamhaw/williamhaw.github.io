@@ -3,3 +3,9 @@
 
 ## Based on
 [Contrast](https://github.com/niklasbuschmann/contrast) theme by Niklas Buschmann
+
+## Instructions
+
+To run locally at http://localhost:4000 `bundle exec jekyll serve`
+
+To build (generate output at `/_site`) `bundle exec jekyll build`
