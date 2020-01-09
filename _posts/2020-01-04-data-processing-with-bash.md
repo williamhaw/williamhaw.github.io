@@ -12,7 +12,15 @@ TL;DR commands:
 ```bash
 echo "supplier_id,supplier_value,mapping_type" > header.csv
 
-cat hotel-facility-dump | rg "facility:" | awk -F'facility: ' '{print $2}' | sort | uniq -c | sort --numeric-sort --reverse | head -n 500 | awk -F ' "' '{print 12345",""\42"$2}' > hotel-processed
+cat hotel-facility-dump | \                 #read from file
+rg "facility:" | \                          #find relevant logs
+awk -F'facility: ' '{print $2}' | \         #extract content in the form of 'facility name,facility code'
+sort | \                                    #sort for the next step
+uniq -c | \                                 #get all unique entries with count
+sort --numeric-sort --reverse | \           #get entries with count in descending order
+head -n 500 | \                             #take top 500 entries
+awk -F ' "' '{print 12345",""\42"$2}' > \   #remove count and put back double quote
+hotel-processed                             #write to output file
 
 cat header.txt hotel-processed > hotel-facilites.csv
 ```
@@ -34,7 +42,9 @@ To extract the facility information from the raw logs, I turned to [grep](http:/
 
 Command:
 ```bash
-cat hotel-facility-dump | rg "facility:" | awk -F 'facility: ' '{print $2}'
+cat hotel-facility-dump | \
+rg "facility:" | \
+awk -F 'facility: ' '{print $2}'
 ```
 
 Output:
@@ -66,14 +76,24 @@ To group by each unique facility string, we can use the [uniq](http://man7.org/l
 
 Command:
 ```bash
-cat hotel-facility-dump | rg "facility:" | awk -F 'facility: ' '{print $2}' | sort | uniq
+cat hotel-facility-dump | \
+rg "facility:" | \
+awk -F 'facility: ' '{print $2}' | \
+sort | \
+uniq
 ```
 
 However, the output is not super useful. To get a count of occurences, we can use `uniq -c`. To get the facilities with the highest occurence, we need to sort again, this time in reverse. Since `uniq -c` prepends a count to each row, we need to pass the `--numeric-sort` flag to sort to treat the start of the row as a numeric value. We can then see the ten most common facilities with `head`.
 
 Command:
 ```bash
-cat hotel-facility-dump | rg "facility:" | awk -F 'facility: ' '{print $2}' | sort | uniq -c | sort --numeric-sort --reverse | head
+cat hotel-facility-dump | \
+rg "facility:" | \
+awk -F 'facility: ' '{print $2}' | \
+sort | \
+uniq -c | \
+sort --numeric-sort --reverse | \
+head
 ```
 
 Output:
@@ -101,7 +121,15 @@ Final commands:
 ```bash
 echo "supplier_id,supplier_value,mapping_type" > header.csv
 
-cat hotel-facility-dump | rg "facility:" | awk -F'facility: ' '{print $2}' | sort | uniq -c | sort --numeric-sort --reverse | head -n 500 | awk -F ' "' '{print 12345",""\42"$2}' > hotel-processed
+cat hotel-facility-dump | \
+rg "facility:" | \
+awk -F'facility: ' '{print $2}' | \
+sort | \
+uniq -c | \
+sort --numeric-sort --reverse | \
+head -n 500 | \
+awk -F ' "' '{print 12345",""\42"$2}' > \
+hotel-processed
 
 cat header.txt hotel-processed > hotel-facilites.csv
 ```
