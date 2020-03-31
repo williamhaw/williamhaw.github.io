@@ -55,29 +55,40 @@ promiseReturningFunctionOne() //say this returns an object
   .catch(e => {console.error(e)}) // handle all errors, processing stops at the first function that throws an error
 ```
 
-The state that each function gets is only
+The state that each function gets is from the one immediately preceeding it; that `state` object is _not_ the same as the one wrapping `myValue.`
 
 After thinking about it, I came up with something like this:
 
 ```javascript
-functionOne()
+downloadWireMock()
   .then(state => {
-    sideEffect(); //perform side effect, doesn't return any value
+    copyStubs(); //perform side effect, doesn't return any value
     return state;
   })
   .then(state => {
-    const valueObject = nonSideEffect();
+    const wiremockProcessState = startWireMock();
     //merge state so that later functions have access
     return {
       ...state,
-      ...valueObject
+      ...wiremockProcessState
     }
   })
+  .then(state => {console.log(`State after WireMock started: ${state}`)})
   ...
 ```
 
 # The Good
 
+* It's vanilla JavaScript.
+* It extracts the state handling and organises the main logic as a flow. The structure of the app can be understood by reading top to bottom.
+* The various helper functions don't need to know about the rest of the flow.
+* The entire state of the application can be easily logged by sticking a `then` clause in between any two steps (second-last line above).
+
 # The Bad
 
+* There's a lot of boilerplate. Instead of one line to add a function to the chain, it's 3-4 lines. For every function.
+* Every non side-effecting function needs to return an object so that it can be merged into the previous state.
+
 # The Ugly
+
+* Did I say boilerplate?
