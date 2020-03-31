@@ -18,3 +18,4 @@ fields:
 pages:
 - _posts/2019-03-31-scala-six-months-in.md
 - _posts/2019-05-31-sbt-tricks.md
+- how-not-to-thread-state-through-a-javascript-promise-chain.md
