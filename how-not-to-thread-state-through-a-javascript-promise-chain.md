@@ -55,7 +55,7 @@ promiseReturningFunctionOne() //say this returns an object
   .catch(e => {console.error(e)}) // handle all errors, processing stops at the first function that throws an error
 ```
 
-The state that each function gets is from the one immediately preceeding it; that `state` object is _not_ the same as the one wrapping `myValue.`
+The state that each function gets is from the one immediately preceding it; that `state` object is _not_ the same as the one wrapping `myValue.`
 
 After thinking about it, I came up with something like this:
 
@@ -79,7 +79,7 @@ downloadWireMock()
 
 # The Good
 
-* It's vanilla JavaScript.
+* It's vanilla JavaScript (ES6).
 * It extracts the state handling and organises the main logic as a flow. The structure of the app can be understood by reading top to bottom.
 * The various helper functions don't need to know about the rest of the flow.
 * The entire state of the application can be easily logged by sticking a `then` clause in between any two steps (second-last line above).
