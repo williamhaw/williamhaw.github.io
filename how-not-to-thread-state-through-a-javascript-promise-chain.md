@@ -66,7 +66,7 @@ downloadWireMock()
     return state;
   })
   .then(state => {
-    const wiremockProcessState = startWireMock();
+    const wiremockProcessState = startWireMock(state.wireMockPath);
     //merge state so that later functions have access
     return {
       ...state,
@@ -81,14 +81,45 @@ downloadWireMock()
 
 * It's vanilla JavaScript (ES6).
 * It extracts the state handling and organises the main logic as a flow. The structure of the app can be understood by reading top to bottom.
+* Values in the state object can only be accessed by later steps, earlier steps cannot accidentally access values produced by later steps.
 * The various helper functions don't need to know about the rest of the flow.
 * The entire state of the application can be easily logged by sticking a `then` clause in between any two steps (second-last line above).
+* Error handling only needs to be handled once at the end of the chain.
 
 # The Bad
 
 * There's a lot of boilerplate. Instead of one line to add a function to the chain, it's 3-4 lines. For every function.
 * Every non side-effecting function needs to return an object so that it can be merged into the previous state.
+* I can't use functions that return promises, I need the actual values to be put in the state. Technically I _can_, but that would make it really confusing; which value do I need to await on?
+* The keys for the values present in the state object are not defined in a central location. I have to inspect the function that produces that value to know the name of its key. This breaks encapsulation.
 
 # The Ugly
 
 * Did I say boilerplate?
+
+I wasn't really happy with this solution, but I thought it had its merits. Then I ~~started wondering~~ came to my senses and tried implementing it with async/await:
+
+```javascript
+(async function() {
+  try{
+    const wiremockPath = await downloadWireMock();
+    copyStubs();
+    var wiremockProcess = startWireMock(wireMockPath); //need hoisting to be referenced in the finally clause
+    ...
+  } catch (e) {
+    console.error(e);
+  } finally {
+    killWireMock(wiremockProcess);
+  }
+})
+```
+
+and it was much simpler. I realised that maybe the abstraction I needed all along were **statements**. Simple statements also have many of the good properties above and don't have the disadvantages of my approach 🤦‍♂️. In particular:
+
+1. You can't use a value _before_ it has been created.
+2. Variables are scoped to the function they are declared in.
+3. Can literally be read top to bottom.
+
+To be clear, this is not a knock against promise chains. They are useful if the later parts of the chain only depend on the step immediately before. In my case I was able to reap the benefits of async/await because I benefited from the illusion that all my asynchronous functions were synchronous.
+
+The development process was really smooth as I happened to use libraries that had Typescript interface declarations. I was surprised how much it helped to have easy access to arguments and return values which I take for granted in Java and Scala. I think I'll try out TypeScript in the near future.
