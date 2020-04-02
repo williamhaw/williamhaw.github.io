@@ -5,7 +5,6 @@ category: ''
 tags:
 - GitHub Actions
 - JavaScript
-published: false
 
 ---
 Last weekend I created a [GitHub Action](https://github.com/features/actions) and submitted it to the GitHub Hackathon. It was a relatively simple workflow that brings up a [WireMock](http://wiremock.org/) API for tests to run against.
