@@ -40,11 +40,11 @@ I started out stubbing all the functions and deciding on their inputs and output
 * To tell GitHub that the job failed, I need the status from pinging WireMock and from running the test command.
 * These steps need to run in the order above.
 
-What all these have in common is that
+What all these have in common is that these steps take state that is not from the immediately preceding step.
 
 At this point I could either store the required values in global state or find an abstraction that allows me to be able to retrieve state that needs to span across multiple steps.
 
-At this point I read up on Javascript Promises and realized that I could use a chain of Promises to enforce the execution order without maintaining global state. Just one problem:
+I read up on Javascript Promises and realized that I could use a chain of Promises to enforce the execution order without maintaining global state. Just one problem:
 
 ```javascript
 //promises are chained like this
@@ -55,7 +55,7 @@ promiseReturningFunctionOne() //say this returns an object
   .catch(e => {console.error(e)}) // handle all errors, processing stops at the first function that throws an error
 ```
 
-The state that each function gets is from the one immediately preceding it; that `state` object is _not_ the same as the one wrapping `myValue.`
+The state that each function gets is from the one immediately preceding it; that `state` object is _not_ the same as the one wrapping `myValue`.
 
 After thinking about it, I came up with something like this:
 
@@ -111,7 +111,7 @@ I wasn't really happy with this solution, but I thought it had its merits. Then 
   } finally {
     killWireMock(wiremockProcess);
   }
-})
+})()
 ```
 
 and it was much simpler. I realised that maybe the abstraction I needed all along were **statements**. Simple statements also have many of the good properties above and don't have the disadvantages of my approach 🤦‍♂️. In particular:
@@ -122,4 +122,8 @@ and it was much simpler. I realised that maybe the abstraction I needed all alon
 
 To be clear, this is not a knock against promise chains. They are useful if the later parts of the chain only depend on the step immediately before. In my case I was able to reap the benefits of async/await because I benefited from the illusion that all my asynchronous functions were synchronous.
 
-The development process was really smooth as I happened to use libraries that had Typescript interface declarations. I was surprised how much it helped to have easy access to arguments and return values which I take for granted in Java and Scala. I think I'll try out TypeScript in the near future.
+## Notes
+
+* The development process was really smooth as I happened to use libraries that had Typescript interface declarations. I was surprised how much it helped to have easy IDE access to arguments and return values which I take for granted in Java and Scala. I think I'll try out writing in TypeScript in the near future.
+* GitHub Actions runs really fast, fast enough to be an effective integration test for this Action. My test workflow took 30-40 seconds to complete, then I would move on to the next bit of functionality.
+* I chose to implement this Action in Node as I felt that this Action should be cross-platform. Implementing it in a Docker container limits it to Linux runners.
