@@ -20,11 +20,13 @@ Basically you can define a function that takes the Scala version string and retu
 For SBT 0.13.17, this is an example of what I used:
 
 specifiying versions:
+
 ```scala
 crossScalaVersions := Seq("2.11.8", "2.12.8")
 ```
 
 configure libraries:
+
 ```scala
 val lib_2_11 = "com.example" %% "protobuf" % "0.1.0-scalapb-0.4.9"
 val lib = "com.example" %% "protobuf" % "0.1.0-scalapb-0.6.0"
@@ -69,3 +71,14 @@ Since sbt 0.13.8, you can just put your version specific code in version specifi
 `exclude()` and `excludeAll()` do not understand Scala versions; you have to specify the Scala version suffix i.e. `exclude("com.example", "my_library_2.12")`
 
 The reason, as noted [here](https://stackoverflow.com/questions/25179314/why-is-sbt-not-excluding-these-libraries-despite-using-excludes), is that the underlying Ivy dependency resolution doesn't understand sbt conventions (for e.g. the version suffix in the library name).
+
+# Versioning in a multi-module builds
+
+If you have a version.sbt file in the root of your repository, to apply the version to all modules, use the following:
+
+    version in ThisBuild := "x.y.z"
+    
+    //or for sbt >= 1.1.0,
+    ThisBuild / version := "x.y.z"
+
+If you only specify `version := "x.y.z"`, it will only apply to the root project.
