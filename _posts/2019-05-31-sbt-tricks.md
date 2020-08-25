@@ -72,7 +72,7 @@ Since sbt 0.13.8, you can just put your version specific code in version specifi
 
 The reason, as noted [here](https://stackoverflow.com/questions/25179314/why-is-sbt-not-excluding-these-libraries-despite-using-excludes), is that the underlying Ivy dependency resolution doesn't understand sbt conventions (for e.g. the version suffix in the library name).
 
-# Versioning in a multi-module builds
+# Versioning in a multi-module build
 
 If you have a version.sbt file in the root of your repository, to apply the version to all modules, use the following:
 
@@ -81,4 +81,8 @@ If you have a version.sbt file in the root of your repository, to apply the vers
     //or for sbt >= 1.1.0,
     ThisBuild / version := "x.y.z"
 
-If you only specify `version := "x.y.z"`, it will only apply to the root project.
+If you only specify 
+```
+version := "x.y.z"
+```
+the version will only apply to the root project.
