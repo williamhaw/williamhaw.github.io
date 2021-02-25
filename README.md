@@ -9,3 +9,5 @@
 To run locally at http://localhost:4000 `bundle exec jekyll serve`
 
 To build (generate output at `/_site`) `bundle exec jekyll build`
+
+To run on Docker: `docker-compose up`
