@@ -19,7 +19,7 @@ I puzzled over unexpected NullPointerExceptions when checking values in value cl
 
 [Value classes](https://docs.scala-lang.org/overviews/core/value-classes.html) have two uses in Scala:
 
-1. Avoid allocation of an extra wrapper class at runtime.
+1. To avoid allocation of an extra wrapper class at runtime.
 2. As a tag for certain important pieces of data instead of passing raw strings and integers around.
 
 For example,
