@@ -132,7 +132,7 @@ Those include:
 
 
 > A language that doesn't affect the way you think about programming, is not worth knowing.
-> -<cite>Alan Perlis, [Epigrams on Programming](http://pu.inf.uni-tuebingen.de/users/klaeren/epigrams.html) #19, 1982</cite>
+> -<cite>Alan Perlis, [Epigrams on Programming](http://www.cs.yale.edu/homes/perlis-alan/quotes.html) #19, 1982</cite>
 
 More and more it seems to me that Scala is one of those languages which has affected the way I think about programming. The biggest change is that types actually feel like my friend now, in that I can use the richer type system and constructs to automatically enforce many things that I would have to write code for in Java.
 
